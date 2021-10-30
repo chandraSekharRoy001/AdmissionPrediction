@@ -138,7 +138,7 @@ input[type=submit]:hover {
 <div class="container">
   <form action="{{url_for('predict')}}" method="post">
      <center>
-      <h2 class="bottom-container">Predict Admission Chances</h2>
+      			<h2 class="bottom-container">Predict Admission Chances</h2>
 			<input type="number" name="GRE Score" placeholder="Enter GRE Score out of 340" required="required" min="0" max="340"/>
 			<input type="number" name="TOEFL Score" placeholder="Enter TOEFL Score out of 120" required="required" min="0" max="120"/>
 			<input type="number" name="CGPA" placeholder="Enter CGPA out of 10.0" required="required" onkeypress="return check(event,value)" step="0.01" min="1" max="10"/>
