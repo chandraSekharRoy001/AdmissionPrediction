@@ -2,7 +2,7 @@
 <html>
 <head>
   <SCRIPT language=Javascript>
-    <!--
+    
     function check(e, value) {
       //Check Charater
       var unicode = e.charCode ? e.charCode : e.keyCode;
@@ -11,7 +11,6 @@
       if (unicode != 8)
         if ((unicode < 48 || unicode > 57) && unicode != 46) return false;
     }
-    //-->
   </SCRIPT>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -35,7 +34,7 @@ body {
 /* style inputs and link buttons */
 input,
 .btn {
-  width: 100%;
+  width: 50%;
   padding: 12px;
   border: none;
   border-radius: 4px;
@@ -55,13 +54,13 @@ input:hover,
 
 /* style the submit button */
 input[type=submit] {
-  background-color: #4CAF50;
+  background-color: #d6781f;
   color: white;
   cursor: pointer;
 }
 
 input[type=submit]:hover {
-  background-color: #45a049;
+  background-color: #d6781f;
 }
 
 /* Two-column layout */
@@ -108,16 +107,20 @@ input[type=submit]:hover {
 /* bottom container */
 .bottom-container {
   text-align: center;
-  background-color: #666;
-  border-radius: 0px 0px 4px 4px;
+  background-color: rgb(247, 198, 142);
+  /*border-radius: 0px 0px 4px 4px;*/
+  width: 50%;
 }
 
 /* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 650px) {
-  .col {
+  
+    .col {
     width: 100%;
     margin-top: 0;
-  }
+    
+  } 
+  
   /* hide the vertical line */
   .vl {
     display: none;
@@ -134,46 +137,15 @@ input[type=submit]:hover {
 
 <div class="container">
   <form action="{{url_for('predict')}}" method="post">
-    <div class="row">
-      <marquee class="bottom-container"><h2>Graduate Admission Prediction using Linear Regression</h2></marquee>
-      <div class="vl">
-        <span class="vl-innertext"></span>
-      </div>
-
-      <div class="col">
-	  <p><b>In this project, I build a linear regression model to predict the chance of admission into a particular university based on studetent's profile.</p></b>
-	  <h3>Instructions for Input Features</h3>
-      <ul>
-			<li>GRE Score (out of 340)</li>
-			<li>TOEFL Score (out of 120)</li>
-			
-			
-			
-			<li>Undergraduate CGPA (out of 10)</li>
-			
-	   
-	  </ul>
-      </div>
-
-      <div class="col">
-        <div class="hide-md-lg">
-        </div>
-
-			<input type="number" name="GRE Score" placeholder="GRE Score" required="required" min="0" max="340"/>
-			<input type="number" name="TOEFL Score" placeholder="TOEFL Score" required="required" min="0" max="120"/>
-			
-			<input type="number" name="CGPA" placeholder="CGPA" required="required" onkeypress="return check(event,value)" step="0.01" min="1" max="10"/>
-			
-			
+     <center>
+      <h2 class="bottom-container">Predict Admission Chances</h2>
+			<input type="number" name="GRE Score" placeholder="Enter GRE Score out of 340" required="required" min="0" max="340"/>
+			<input type="number" name="TOEFL Score" placeholder="Enter TOEFL Score out of 120" required="required" min="0" max="120"/>
+			<input type="number" name="CGPA" placeholder="Enter CGPA out of 10.0" required="required" onkeypress="return check(event,value)" step="0.01" min="1" max="10"/>
 			<input type="submit" value="Predict"></input>
-			
 			<h4 style="text-align: center;">{{prediction_text}}</h4>
-      </div>
-      
-    </div>
+     </center>
   </form>
-  
 </div>
-
 </body>
 </html>
